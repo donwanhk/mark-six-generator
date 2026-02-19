@@ -1,22 +1,33 @@
-$(document).ready(function() {
-    // Function to generate numbers
-    function generateNumbers() {
-        const numbers = [];
-        while (numbers.length < 6) {
-            const num = Math.floor(Math.random() * 49) + 1;
-            if (!numbers.includes(num)) {
-                numbers.push(num);
+function MarkSixGenerator()
+{
+    this.result = [];
+
+    /**
+     * Generate 6 random numbers and put into result.
+     */
+    this.generate = function () {
+        while (this.result.length < 6) {
+            // Get a random integer from 1 to 49.
+            var num = Math.floor(Math.random() * 49) + 1;
+            // Skip for duplicated number.
+            if (this.result.indexOf(num) >= 0) {
+                continue;
             }
+            this.result.push(num);
         }
-        numbers.sort((a, b) => a - b);
-        $('#result').text(numbers.join(', '));
+        this.result.sort((a, b) => a - b);
     }
-    
-    // Generate numbers on page load
-    generateNumbers();
-    
+}
+
+var generator = new MarkSixGenerator();
+
+$(function() {
+    generator.generate();
+    $('#result').text(generator.result.join(' '));
+
     // Refresh button click handler
-    $('#refreshBtn').click(function() {
-        generateNumbers();
+    $('#refresh-btn').click(function() {
+        generator.generate();
+        $('#result').text(generator.result.join(' '));
     });
 });
