@@ -7,8 +7,8 @@ function MarkSixGenerator()
      */
     this.generate = function () {
         while (this.result.length < 6) {
-            // Get a random integer from 1 to 47.
-            var num = Math.floor(Math.random() * 47) + 1;
+            // Get a random integer from 1 to 49.
+            var num = Math.floor(Math.random() * 49) + 1;
             // Skip for duplicated number.
             if (this.result.indexOf(num) >= 0) {
                 continue;
