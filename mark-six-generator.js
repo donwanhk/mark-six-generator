@@ -6,6 +6,8 @@ function MarkSixGenerator()
      * Generate 6 random numbers and put into result.
      */
     this.generate = function () {
+        this.result = [];
+        
         while (this.result.length < 6) {
             // Get a random integer from 1 to 49.
             var num = Math.floor(Math.random() * 49) + 1;
